@@ -1,18 +1,30 @@
 const assertEqual = function(actual, expected) {
-   let output = eqArrays(actual, expected);
-    console.log(output);  //<--
-    if (output) {
-      console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-    } else {
-      console.log(`🛑🛑🛑 Assertion Failed: ${actual} != ${expected}`);
+
+  if (actual === expected) {
+    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
+  } else {
+    console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
+  }
+};
+
+//eqArrays Function Implementation
+const eqArrays = function(arr1, arr2) {
+  const arr1Len = arr1.length;
+  const arr2Len = arr2.length;
+  if (arr1Len === arr2Len) {
+    for (let i = 0; i < arr1Len; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
     }
-  };
+    return true;
+  } else return false;
+};
 
-
-//   return console.log("Assertion Passed: " + actual + " === " + expected);
-//    return console.log("Assertion Failed: " + actual + " !=== " + expected);
-
-// // TEST CODE
-// assertEqual("Lighthouse Labs", "Bootcamp");
-// assertEqual(1, 1);
-// assertEqual(1,3);
+// Test the function
+assertEqual(eqArrays([1,2,3],[1,2,3]), true);
+assertEqual(eqArrays([1,2,3],[3,2,1]), false);
+assertEqual(eqArrays(["1","2","3"],["1","2","3"]), true);
+assertEqual(eqArrays(["1","2","3"],["1","2",3]), false);
+assertEqual(eqArrays([1,2,3],[1,2]), false);
+assertEqual(eqArrays([1,2],[1,2,3]), false);
