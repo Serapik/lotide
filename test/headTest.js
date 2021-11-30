@@ -1,10 +1,3 @@
-// const head = require('../head.js');
-// const log = console.log;
-
-// log(head(234234));
-// log(head("Lighthouse"));
-// log(head('bootcamp'));
-
 const assert = require('chai').assert;
 const head   = require('../head');
 
@@ -19,3 +12,4 @@ describe("#head", () => {
     assert.strictEqual(head(['5']), '5'); 
   });
 });
+
